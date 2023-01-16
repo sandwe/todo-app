@@ -1,8 +1,8 @@
-import {Routes, Route} from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
-import NotFoundPage from "../pages/NotFoundPage";
+import { Routes, Route } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const Router = () => {
   return (
