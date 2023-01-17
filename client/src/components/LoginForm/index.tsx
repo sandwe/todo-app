@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { preview } from 'vite';
+import { useState } from 'react';
 import { validateEmail, validatePassword } from '../../utils/validator';
-import { Form, Label, Input, Button, LinkText } from './style';
+import { Form, Input, Button, LinkText, WarningText } from './style';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +26,12 @@ const LoginForm = () => {
 
   return (
     <Form>
-      <Label htmlFor='email'>이메일</Label>
-      <Input id='email' type='email' onChange={handleChangeEmail} />
-      <Label htmlFor='password'>비밀번호</Label>
-      <Input id='password' type='password' onChange={handleChangePassword} />
+      <label htmlFor='email'>이메일</label>
+      <Input id='email' type='email' onChange={handleChangeEmail} isValid={isValid.email} />
+      <WarningText isWarn={!isValid.email && !!email.length}>이메일 형식이 올바르지 않습니다.</WarningText>
+      <label htmlFor='password'>비밀번호</label>
+      <Input id='password' type='password' onChange={handleChangePassword} isValid={isValid.password} />
+      <WarningText isWarn={!isValid.password && !!password.length}>비밀번호는 최소 8자 이상이어야 합니다.</WarningText>
       <Button disabled={isDisabled}>로그인</Button>
       <LinkText to='/signup'>회원가입</LinkText>
     </Form>
