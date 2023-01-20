@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const baseURL = process.env.REACT_APP_SERVER_URL as string;
-
+const baseURL = import.meta.env.VITE_SERVER_URL as string;
 const axiosInstance = axios.create({
   baseURL,
 });

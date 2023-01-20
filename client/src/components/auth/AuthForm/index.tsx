@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLoginMutation, useSignupMutation } from '../../../queries/auth';
 import { validateEmail, validatePassword } from '../../../utils/validator';
 import { Form, Input, Button, LinkText, WarningText } from './style';
 
@@ -6,11 +8,14 @@ interface AuthFormProps {
   type: string;
 }
 const AuthForm = ({ type }: AuthFormProps) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const isEmailValid = validateEmail(email);
   const isPasswordValid = validatePassword(password);
+
+  const { mutate } = type === '로그인' ? useLoginMutation() : useSignupMutation();
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -20,8 +25,13 @@ const AuthForm = ({ type }: AuthFormProps) => {
     setPassword(e.target.value);
   };
 
+  const handleSubmit = () => {
+    mutate({ email, password });
+    navigate('/', { replace: true });
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <label htmlFor='email'>이메일</label>
       <Input id='email' type='email' onChange={handleChangeEmail} isValid={isEmailValid} />
       <WarningText isWarn={!isEmailValid && !!email.length}>이메일 형식이 올바르지 않습니다.</WarningText>
