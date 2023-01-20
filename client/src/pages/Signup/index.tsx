@@ -1,7 +1,15 @@
-import React from 'react';
+import AuthForm from '../../components/auth/AuthForm';
+import { Container, Title } from './style';
 
 const Signup = () => {
-  return <div>Signup</div>;
+  const type = '회원가입';
+
+  return (
+    <Container>
+      <Title>{type}</Title>
+      <AuthForm type={type} />
+    </Container>
+  );
 };
 
 export default Signup;

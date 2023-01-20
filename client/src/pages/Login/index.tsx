@@ -1,12 +1,13 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm';
+import AuthForm from '../../components/auth/AuthForm';
 import { Container, Title } from './style';
 
 const Login = () => {
+  const type = '로그인';
   return (
     <Container>
-      <Title>로그인</Title>
-      <LoginForm />
+      <Title>{type}</Title>
+      <AuthForm type={type} />
     </Container>
   );
 };

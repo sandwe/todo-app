@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { validateEmail, validatePassword } from '../../utils/validator';
+import { validateEmail, validatePassword } from '../../../utils/validator';
 import { Form, Input, Button, LinkText, WarningText } from './style';
 
-const LoginForm = () => {
+interface AuthFormProps {
+  type: string;
+}
+const AuthForm = ({ type }: AuthFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,10 +28,10 @@ const LoginForm = () => {
       <label htmlFor='password'>비밀번호</label>
       <Input id='password' type='password' onChange={handleChangePassword} isValid={isPasswordValid} />
       <WarningText isWarn={!isPasswordValid && !!password.length}>비밀번호는 최소 8자 이상이어야 합니다.</WarningText>
-      <Button disabled={!isEmailValid || !isPasswordValid}>로그인</Button>
-      <LinkText to='/signup'>회원가입</LinkText>
+      <Button disabled={!isEmailValid || !isPasswordValid}>{type}</Button>
+      {type === '로그인' && <LinkText to='/signup'>회원가입</LinkText>}
     </Form>
   );
 };
 
-export default LoginForm;
+export default AuthForm;
