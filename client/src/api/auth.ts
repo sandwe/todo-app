@@ -1,12 +1,16 @@
 import axiosInstance from './axiosInstance';
-import { UserInfo } from '../types/auth';
+import { AuthResponse, UserInfo } from '../types/auth';
 
 const authAPI = {
-  login: (data: UserInfo) => {
-    return axiosInstance.post('/users/login', data);
+  login: async (userInfo: UserInfo): Promise<AuthResponse> => {
+    const { data } = await axiosInstance.post('/users/login', userInfo);
+
+    return data;
   },
-  signUp: (data: UserInfo) => {
-    return axiosInstance.post('/users/create', data);
+  signup: async (userInfo: UserInfo): Promise<AuthResponse> => {
+    const { data } = await axiosInstance.post('/users/create', userInfo);
+
+    return data;
   },
 };
 
