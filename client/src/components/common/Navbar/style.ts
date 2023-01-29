@@ -4,7 +4,8 @@ export const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.borderGray};
+  background-color: ${({ theme }) => theme.white};
+  box-shadow: 0 0 0.5rem 0 rgba(100, 100, 100, 0.3);
   padding: 1rem 2rem;
 `;
 
