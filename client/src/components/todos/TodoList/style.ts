@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { ellipsisStyle } from '../../../styles/ellipsisStyle';
 
 export const Container = styled.section`
-  flex-basis: 30%;
+  flex-shrink: 0;
+  width: 300px;
   border-right: 1px solid ${({ theme }) => theme.borderGray};
   padding: 2rem 1rem 1rem;
 `;
