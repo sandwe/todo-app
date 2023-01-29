@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    background-color: ${({ theme }) => theme.bgBlue};
+  }
+
   a {
     text-decoration:none;
     cursor: pointer;

@@ -1,7 +1,7 @@
-import React from 'react';
+import { Container } from './style';
 
 const TodoDetail = () => {
-  return <div>TodoDetail</div>;
+  return <Container>TodoDetail</Container>;
 };
 
 export default TodoDetail;

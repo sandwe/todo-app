@@ -1,7 +1,7 @@
-import React from 'react';
+import { Container } from './style';
 
 const TodoList = () => {
-  return <div>TodoList</div>;
+  return <Container>TodoList</Container>;
 };
 
 export default TodoList;
