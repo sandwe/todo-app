@@ -1,10 +1,19 @@
-import { Container, Text, Todos, Todo, Title, Content } from './style';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../common/Button';
+import { Container, Wrapper, Text, Todos, Todo, Title, Content } from './style';
 
 const TodoList = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <h3 className='sr-only'>할 일 목록</h3>
-      <Text>Tasks 3</Text>
+      <Wrapper>
+        <Text>Tasks 3</Text>
+        <Button type='button' size='small' onClick={() => navigate('/new')}>
+          NEW
+        </Button>
+      </Wrapper>
       <Todos>
         <Todo>
           <Title>제목1</Title>

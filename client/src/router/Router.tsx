@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import NotFound from '../pages/NotFound';
+import TodoCreate from '../pages/TodoCreate';
 
 const Router = () => {
   return (
@@ -10,6 +11,7 @@ const Router = () => {
       <Route path='/'>
         <Route index element={<Home />} />
         <Route path='/todos/:id' element={<Home />} />
+        <Route path='/new' element={<TodoCreate />} />
         <Route path='auth' element={<Login />} />
         <Route path='signup' element={<Signup />} />
       </Route>
