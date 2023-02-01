@@ -1,9 +1,8 @@
 import AuthForm from '../../components/auth/AuthForm';
 import { Container, Title } from './style';
 
-const Signup = () => {
-  const type = '회원가입';
-
+const LoginPage = () => {
+  const type = '로그인';
   return (
     <Container>
       <Title>{type}</Title>
@@ -12,4 +11,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default LoginPage;

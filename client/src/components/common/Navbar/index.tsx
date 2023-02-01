@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { Wrapper, Title, LogoutBtn } from './style';
 
 const Navbar = () => {
@@ -10,12 +10,15 @@ const Navbar = () => {
   };
 
   return (
-    <Wrapper>
-      <Link to='/'>
-        <Title>Todo-List</Title>
-      </Link>
-      <LogoutBtn onClick={handleLogout}>로그아웃</LogoutBtn>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Link to='/'>
+          <Title>Todo-List</Title>
+        </Link>
+        <LogoutBtn onClick={handleLogout}>로그아웃</LogoutBtn>
+      </Wrapper>
+      <Outlet />
+    </>
   );
 };
 

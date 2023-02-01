@@ -1,9 +1,9 @@
-import React from 'react';
 import AuthForm from '../../components/auth/AuthForm';
 import { Container, Title } from './style';
 
-const Login = () => {
-  const type = '로그인';
+const SignupPage = () => {
+  const type = '회원가입';
+
   return (
     <Container>
       <Title>{type}</Title>
@@ -12,4 +12,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignupPage;
