@@ -28,6 +28,7 @@ export const WarningText = styled.strong<{ isWarn: boolean }>`
 `;
 
 export const LinkText = styled(Link)`
+  margin-top: 20px;
   color: ${({ theme }) => theme.textGray};
   text-align: center;
 `;

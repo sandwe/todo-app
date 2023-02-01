@@ -8,7 +8,6 @@ export const StyledButton = styled.button<{ size?: string }>`
   font-weight: 600;
   font-size: 1.1rem;
   border-radius: 5px;
-  margin: 8px 0 20px;
 
   &:disabled {
     cursor: default;

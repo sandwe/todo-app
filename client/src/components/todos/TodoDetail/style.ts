@@ -7,6 +7,7 @@ export const Container = styled.section`
 
 export const ButtonWrapper = styled.div`
   text-align: end;
+  margin-bottom: 14px;
 
   & button + button {
     margin-left: 10px;
