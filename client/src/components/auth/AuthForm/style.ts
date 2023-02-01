@@ -27,21 +27,6 @@ export const WarningText = styled.strong<{ isWarn: boolean }>`
   color: ${({ theme }) => theme.red};
 `;
 
-export const Button = styled.button`
-  padding: 14px 0;
-  color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.blue};
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  margin: 8px 0 20px;
-  &:disabled {
-    cursor: default;
-    background-color: ${({ theme }) => theme.borderGray};
-    color: ${({ theme }) => theme.textGray};
-  }
-`;
-
 export const LinkText = styled(Link)`
   color: ${({ theme }) => theme.textGray};
   text-align: center;

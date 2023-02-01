@@ -1,12 +1,17 @@
-import { Container, ButtonWrapper, Button, Title, Content, UpdatedAt } from './style';
+import Button from '../../common/Button';
+import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 
 const TodoDetail = () => {
   return (
     <Container>
       <h3 className='sr-only'>할 일 (번호)</h3>
       <ButtonWrapper>
-        <Button color='pink'>삭제</Button>
-        <Button color='blue'>수정</Button>
+        <Button color='red' size='small' type='button'>
+          삭제
+        </Button>
+        <Button size='small' type='button'>
+          수정
+        </Button>
       </ButtonWrapper>
       <Title>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis perspiciatis ratione, eos quasi possimus

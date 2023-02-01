@@ -7,20 +7,10 @@ export const Container = styled.section`
 
 export const ButtonWrapper = styled.div`
   text-align: end;
+
   & button + button {
     margin-left: 10px;
   }
-`;
-
-export const Button = styled.button`
-  padding: 14px 0;
-  width: 4rem;
-  color: ${({ theme }) => theme.white};
-  background-color: ${({ theme, color }) => (color === 'pink' ? theme.red : theme.blue)};
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  margin: 8px 0 20px;
 `;
 
 export const Title = styled.h4`
