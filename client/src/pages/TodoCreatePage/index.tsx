@@ -1,10 +1,10 @@
-import Navbar from '../../components/common/Navbar';
 import TodoLayout from '../../components/todos/TodoLayout';
+import TodoForm from '../../components/todos/TodoForm';
 
 const TodoCreatePage = () => {
   return (
     <TodoLayout>
-      <h2>할일들을 추가해보세요!</h2>
+      <TodoForm />
     </TodoLayout>
   );
 };
