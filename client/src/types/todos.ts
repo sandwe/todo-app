@@ -3,7 +3,7 @@ export interface TodoForm {
   content: string;
 }
 
-export interface Todo {
+export default interface Todo {
   content: string;
   createdAt: string;
   id: string;
