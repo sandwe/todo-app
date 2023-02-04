@@ -24,7 +24,7 @@ const TodoList = () => {
       </Wrapper>
       <Todos>
         {data?.data.data.map((todo: todoType) => (
-          <Todo key={todo.id}>
+          <Todo key={todo.id} onClick={() => navigate(`/todos/${todo.id}`)}>
             <Title>{todo.title}</Title>
             <Content>{todo.content}</Content>
           </Todo>

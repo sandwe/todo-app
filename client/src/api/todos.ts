@@ -5,7 +5,7 @@ const todos = {
   getTodos: () => {
     return axiosInstance.get('/todos');
   },
-  getTodoById: (id: string) => {
+  getTodoById: async (id: string | undefined) => {
     return axiosInstance.get(`/todos/${id}`);
   },
   createTodo: (data: TodoForm) => {

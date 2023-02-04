@@ -1,7 +1,18 @@
+import { useParams } from 'react-router-dom';
+
+import { useGetTodoByIdQuery } from '../../../queries/todo';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 
 const TodoDetail = () => {
+  const params = useParams();
+  const { isLoading, isError, error, data } = useGetTodoByIdQuery(params?.id);
+  const { title, content, updatedAt } = data?.data.data;
+
+  if (isLoading) {
+    return <p>로딩중...</p>;
+  }
+
   return (
     <Container>
       <h3 className='sr-only'>할 일 (번호)</h3>
@@ -13,14 +24,9 @@ const TodoDetail = () => {
           수정
         </Button>
       </ButtonWrapper>
-      <Title>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis perspiciatis ratione, eos quasi possimus
-        nobis praesentium ipsa minima tempora sequi, amet ex iure! Ipsam omnis quis nemo veritatis et mollitia.
-      </Title>
-      <Content>
-        Fugit alias, porro libero doloribus, veniam eveniet praesentium fuga corporis aliquid nihil, laboriosam nisi.
-      </Content>
-      <UpdatedAt>2023년 1월 29일</UpdatedAt>
+      <Title>{title}</Title>
+      <Content>{content}</Content>
+      <UpdatedAt>{updatedAt}</UpdatedAt>
     </Container>
   );
 };

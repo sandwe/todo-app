@@ -32,6 +32,7 @@ export const Todos = styled.ul`
 
 export const Todo = styled.li`
   padding: 1rem 0.5rem;
+  cursor: pointer;
 `;
 
 export const Title = styled.strong`
