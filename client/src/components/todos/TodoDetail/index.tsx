@@ -9,10 +9,6 @@ const TodoDetail = () => {
   const { isLoading, isError, error, data } = useGetTodoByIdQuery(params?.id);
   const { title, content, updatedAt } = data?.data.data;
 
-  if (isLoading) {
-    return <p>로딩중...</p>;
-  }
-
   return (
     <Container>
       <h3 className='sr-only'>할 일 (번호)</h3>

@@ -6,6 +6,7 @@ declare module 'styled-components' {
     bgBlue: string;
     borderGray: string;
     textGray: string;
+    skeletonGray: string;
   }
 }
 
@@ -16,6 +17,7 @@ const theme = {
   bgBlue: '#ebf4ff',
   borderGray: '#d8d9cf',
   textGray: '#6e6e6e',
+  skeletonGray: '#f2f2f2',
 };
 
 export default theme;

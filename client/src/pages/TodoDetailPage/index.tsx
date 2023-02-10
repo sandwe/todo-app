@@ -1,10 +1,15 @@
 import TodoLayout from '../../components/todos/TodoLayout';
-import TodoDetail from '../../components/todos/TodoDetail';
+import { lazy, Suspense } from 'react';
+import TodoSkeleton from '../../components/todos/TodoSkeleton';
+
+const TodoDetail = lazy(() => import('../../components/todos/TodoDetail'));
 
 const TodoDetailPage = () => {
   return (
     <TodoLayout>
-      <TodoDetail />
+      <Suspense fallback={<TodoSkeleton />}>
+        <TodoDetail />
+      </Suspense>
     </TodoLayout>
   );
 };
