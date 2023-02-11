@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense, PropsWithChildren } from 'react';
-
+import { ErrorBoundary } from 'react-error-boundary';
+import TodoFallback from '../../components/todos/TodoFallback';
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';
 
@@ -22,15 +23,17 @@ const DefferedComponent = ({ children }: PropsWithChildren<{}>) => {
 const TodoDetailPage = () => {
   return (
     <TodoLayout>
-      <Suspense
-        fallback={
-          <DefferedComponent>
-            <TodoSkeleton />
-          </DefferedComponent>
-        }
-      >
-        <TodoDetail />
-      </Suspense>
+      <ErrorBoundary FallbackComponent={TodoFallback}>
+        <Suspense
+          fallback={
+            <DefferedComponent>
+              <TodoSkeleton />
+            </DefferedComponent>
+          }
+        >
+          <TodoDetail />
+        </Suspense>
+      </ErrorBoundary>
     </TodoLayout>
   );
 };
