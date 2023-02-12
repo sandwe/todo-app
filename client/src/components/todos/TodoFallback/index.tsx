@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-
+import { FallbackProps } from 'react-error-boundary';
 import Button from '../../common/Button';
+import { Container } from './style';
 
-const TodoFallback = () => {
-  const navigate = useNavigate();
+const TodoFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   return (
-    <div>
-      <p>잘못된 페이지 접근입니다.</p>
-      <Button onClick={() => navigate(-1)}>뒤로 가기</Button>
-    </div>
+    <Container>
+      <p>에러: {error.message}</p>
+      <Button onClick={resetErrorBoundary}>다른 할일 하러가기</Button>
+    </Container>
   );
 };
 

@@ -6,7 +6,7 @@ import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 
 const TodoDetail = () => {
   const params = useParams();
-  const { isLoading, isError, error, data } = useGetTodoByIdQuery(params?.id);
+  const { data } = useGetTodoByIdQuery(params?.id);
   const { title, content, updatedAt } = data?.data.data;
 
   return (
