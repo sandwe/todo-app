@@ -14,7 +14,7 @@ const todos = {
   updateTodo: (id: string, data: TodoForm) => {
     return axiosInstance.put(`/todos/${id}`, data);
   },
-  deleteTodo: (id: string) => {
+  deleteTodo: (id: string | undefined) => {
     return axiosInstance.delete(`todos/${id}`);
   },
 };

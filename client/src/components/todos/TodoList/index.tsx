@@ -17,7 +17,7 @@ const TodoList = () => {
     <Container>
       <h3 className='sr-only'>할 일 목록</h3>
       <Wrapper>
-        <Text>Tasks 3</Text>
+        <Text>Tasks {data?.data.data.length || 0}</Text>
         <Button type='button' size='small' onClick={() => navigate('/new')}>
           NEW
         </Button>
