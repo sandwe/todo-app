@@ -1,10 +1,15 @@
+import { Dispatch, SetStateAction } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetTodoByIdQuery, useDeleteTodoMutation } from '../../../queries/todo';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 
-const TodoDetail = () => {
+interface todoDetailProps {
+  setIsEditMode: Dispatch<SetStateAction<boolean>>;
+}
+
+const TodoDetail = ({ setIsEditMode }: todoDetailProps) => {
   const params = useParams();
   const { data } = useGetTodoByIdQuery(params?.id);
   const { title, content, updatedAt } = data?.data.data;
@@ -17,7 +22,7 @@ const TodoDetail = () => {
         <Button color='red' size='small' type='button' onClick={() => mutate()}>
           삭제
         </Button>
-        <Button size='small' type='button'>
+        <Button size='small' type='button' onClick={() => setIsEditMode(true)}>
           수정
         </Button>
       </ButtonWrapper>

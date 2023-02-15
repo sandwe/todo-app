@@ -11,7 +11,7 @@ const todos = {
   createTodo: (data: TodoForm) => {
     return axiosInstance.post('/todos', data);
   },
-  updateTodo: (id: string, data: TodoForm) => {
+  updateTodo: (id: string | undefined, data: TodoForm) => {
     return axiosInstance.put(`/todos/${id}`, data);
   },
   deleteTodo: (id: string | undefined) => {

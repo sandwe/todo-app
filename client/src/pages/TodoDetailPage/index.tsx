@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense, PropsWithChildren } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router-dom';
 import TodoFallback from '../../components/todos/TodoFallback';
+import TodoForm from '../../components/todos/TodoForm';
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';
 
@@ -23,6 +24,8 @@ const DefferedComponent = ({ children }: PropsWithChildren<{}>) => {
 
 const TodoDetailPage = () => {
   const navigate = useNavigate();
+  const [isEditMode, setIsEditMode] = useState(false);
+
   return (
     <TodoLayout>
       <ErrorBoundary FallbackComponent={TodoFallback} onReset={() => navigate('/')}>
@@ -33,7 +36,7 @@ const TodoDetailPage = () => {
             </DefferedComponent>
           }
         >
-          <TodoDetail />
+          {isEditMode ? <TodoForm /> : <TodoDetail setIsEditMode={setIsEditMode} />}
         </Suspense>
       </ErrorBoundary>
     </TodoLayout>
