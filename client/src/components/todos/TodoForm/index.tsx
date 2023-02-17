@@ -9,19 +9,15 @@ import Todo from '../../../types/todos';
 
 interface todoFormProps {
   todo?: Todo;
+  mutate: ({ title, content }: Pick<Todo, 'title' | 'content'>) => void;
 }
 
-const TodoForm = ({ todo }: todoFormProps) => {
+const TodoForm = ({ todo, mutate }: todoFormProps) => {
   const [title, setTitle] = useState(todo?.title || '');
   const [content, setContent] = useState(todo?.content || '');
   const refContent = useRef<HTMLTextAreaElement>(null);
 
-  const navigate = useNavigate();
-
   useResizeTextArea(refContent.current, content);
-
-  const { mutate, isSuccess, data } = usePostTodoMutation();
-
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
@@ -34,10 +30,6 @@ const TodoForm = ({ todo }: todoFormProps) => {
     e.preventDefault();
     mutate({ title, content });
   };
-
-  if (isSuccess) {
-    navigate(`/todos/${data.data.data.id}`);
-  }
 
   return (
     <Container>
