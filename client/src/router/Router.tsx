@@ -5,6 +5,7 @@ import SignupPage from '../pages/SignupPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import TodoCreatePage from '../pages/TodoCreatePage';
 import TodoDetailPage from '../pages/TodoDetailPage';
+import TodoEditPage from '../pages/TodoEditPage';
 import Navbar from '../components/common/Navbar';
 
 const Router = () => {
@@ -15,6 +16,7 @@ const Router = () => {
           <Route index element={<MainPage />} />
           <Route path='/todos/:id' element={<TodoDetailPage />} />
           <Route path='/new' element={<TodoCreatePage />} />
+          <Route path='/edit/:id' element={<TodoEditPage />} />
         </Route>
         <Route path='auth' element={<LoginPage />} />
         <Route path='signup' element={<SignupPage />} />

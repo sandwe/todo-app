@@ -1,4 +1,6 @@
+import { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { useGetTodosQuery } from '../../../queries/todo';
 import Button from '../../common/Button';
 import { Container, Wrapper, Text, Todos, Todo, Title, Content } from './style';
@@ -7,11 +9,7 @@ import todoType from '../../../types/todos';
 const TodoList = () => {
   const navigate = useNavigate();
 
-  const { isLoading, isError, error, data } = useGetTodosQuery();
-
-  if (isLoading) {
-    return <p>로딩중...</p>;
-  }
+  const { data } = useGetTodosQuery();
 
   return (
     <Container>
@@ -24,7 +22,7 @@ const TodoList = () => {
       </Wrapper>
       <Todos>
         {data?.data.data.map((todo: todoType) => (
-          <Todo key={todo.id} onClick={() => navigate(`/todos/${todo.id}`)}>
+          <Todo key={todo.id} onClick={() => startTransition(() => navigate(`/todos/${todo.id}`))}>
             <Title>{todo.title}</Title>
             <Content>{todo.content}</Content>
           </Todo>

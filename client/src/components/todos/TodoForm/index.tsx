@@ -5,10 +5,15 @@ import useResizeTextArea from '../../../hooks/useResizeTextArea';
 
 import { Container, Input, TextArea } from './style';
 import Button from '../../common/Button';
+import Todo from '../../../types/todos';
 
-const TodoForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+interface todoFormProps {
+  todo?: Todo;
+}
+
+const TodoForm = ({ todo }: todoFormProps) => {
+  const [title, setTitle] = useState(todo?.title || '');
+  const [content, setContent] = useState(todo?.content || '');
   const refContent = useRef<HTMLTextAreaElement>(null);
 
   const navigate = useNavigate();

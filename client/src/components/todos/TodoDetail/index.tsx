@@ -1,18 +1,20 @@
-import { Dispatch, SetStateAction } from 'react';
-import { useParams } from 'react-router-dom';
+import { Dispatch, SetStateAction, startTransition } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { useGetTodoByIdQuery, useDeleteTodoMutation } from '../../../queries/todo';
+import { useDeleteTodoMutation } from '../../../queries/todo';
+import Todo from '../../../types/todos';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 
 interface todoDetailProps {
-  setIsEditMode: Dispatch<SetStateAction<boolean>>;
+  todo: Todo;
 }
 
-const TodoDetail = ({ setIsEditMode }: todoDetailProps) => {
+const TodoDetail = ({ todo }: todoDetailProps) => {
   const params = useParams();
-  const { data } = useGetTodoByIdQuery(params?.id);
-  const { title, content, updatedAt } = data?.data.data;
+  const navigate = useNavigate();
+
+  const { title, content, updatedAt } = todo;
   const { mutate } = useDeleteTodoMutation(params?.id);
 
   return (
@@ -22,7 +24,7 @@ const TodoDetail = ({ setIsEditMode }: todoDetailProps) => {
         <Button color='red' size='small' type='button' onClick={() => mutate()}>
           삭제
         </Button>
-        <Button size='small' type='button' onClick={() => setIsEditMode(true)}>
+        <Button size='small' type='button' onClick={() => navigate(`/edit/${params.id}`)}>
           수정
         </Button>
       </ButtonWrapper>
