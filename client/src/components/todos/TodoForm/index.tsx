@@ -1,18 +1,20 @@
 import { useState, useRef, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { usePostTodoMutation } from '../../../queries/todo';
 import useResizeTextArea from '../../../hooks/useResizeTextArea';
 
 import { Container, Input, TextArea } from './style';
 import Button from '../../common/Button';
 import Todo from '../../../types/todos';
+import { useParams } from 'react-router-dom';
 
 interface todoFormProps {
   todo?: Todo;
-  mutate: ({ title, content }: Pick<Todo, 'title' | 'content'>) => void;
+  mutate: any;
+  isEditMode?: boolean;
 }
 
-const TodoForm = ({ todo, mutate }: todoFormProps) => {
+const TodoForm = ({ todo, mutate, isEditMode }: todoFormProps) => {
+  const params = useParams();
+
   const [title, setTitle] = useState(todo?.title || '');
   const [content, setContent] = useState(todo?.content || '');
   const refContent = useRef<HTMLTextAreaElement>(null);
@@ -28,7 +30,7 @@ const TodoForm = ({ todo, mutate }: todoFormProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    mutate({ title, content });
+    isEditMode ? mutate({ id: params?.id, data: { title, content } }) : mutate({ title, content });
   };
 
   return (

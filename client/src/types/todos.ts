@@ -12,3 +12,8 @@ export default interface Todo {
 }
 
 export type TodoInput = Pick<Todo, 'title' | 'content'>;
+
+export interface TodoFormAndId {
+  id: string | undefined;
+  data: TodoForm;
+}

@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import todosAPI from '../api/todos';
-import { TodoForm } from '../types/todos';
+import { TodoForm, TodoFormAndId } from '../types/todos';
 import queryClient from './queryClient';
 
 export const useGetTodosQuery = () => useQuery(['todos'], todosAPI.getTodos);
@@ -28,11 +28,11 @@ export const useDeleteTodoMutation = (id: string | undefined) => {
   });
 };
 
-export const useUpdateTodoMutation = (id: string | undefined, data: TodoForm) => {
+export const useUpdateTodoMutation = () => {
   const navigate = useNavigate();
-  return useMutation(() => todosAPI.updateTodo(id, data), {
+  return useMutation((data: TodoFormAndId) => todosAPI.updateTodo(data), {
     onSuccess: (data) => {
-      navigate(`/todos/${data.data.id}`);
+      navigate(`/todos/${data.data.data.id}`);
       queryClient.invalidateQueries(['todos']);
     },
   });

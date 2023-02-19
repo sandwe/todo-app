@@ -1,5 +1,5 @@
 import axiosInstance from './axiosInstance';
-import { TodoForm } from '../types/todos';
+import { TodoForm, TodoFormAndId } from '../types/todos';
 
 const todos = {
   getTodos: () => {
@@ -11,7 +11,7 @@ const todos = {
   createTodo: (data: TodoForm) => {
     return axiosInstance.post('/todos', data);
   },
-  updateTodo: (id: string | undefined, data: TodoForm) => {
+  updateTodo: ({ id, data }: TodoFormAndId) => {
     return axiosInstance.put(`/todos/${id}`, data);
   },
   deleteTodo: (id: string | undefined) => {
