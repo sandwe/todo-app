@@ -5,6 +5,7 @@ import { useDeleteTodoMutation } from '../../../queries/todo';
 import Todo from '../../../types/todos';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
+import { changeDateFormat } from '../../../utils/dateFormat';
 
 interface todoDetailProps {
   todo: Todo;
@@ -30,7 +31,7 @@ const TodoDetail = ({ todo }: todoDetailProps) => {
       </ButtonWrapper>
       <Title>{title}</Title>
       <Content>{content}</Content>
-      <UpdatedAt>{updatedAt}</UpdatedAt>
+      <UpdatedAt>{changeDateFormat(updatedAt)}</UpdatedAt>
     </Container>
   );
 };
