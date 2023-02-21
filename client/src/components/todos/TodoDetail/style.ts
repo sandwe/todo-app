@@ -22,7 +22,9 @@ export const Title = styled.h4`
 
 export const Content = styled.p`
   margin-bottom: 1rem;
+  line-height: 1.3rem;
   word-break: break-all;
+  white-space: pre-wrap;
 `;
 
 export const UpdatedAt = styled.time`
