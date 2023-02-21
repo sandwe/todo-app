@@ -1,9 +1,10 @@
 import TodoLayout from '../../components/todos/TodoLayout';
+import TodoMain from '../../components/todos/TodoMain';
 
 const MainPage = () => {
   return (
     <TodoLayout>
-      <h2>할일들을 추가해보세요!</h2>
+      <TodoMain />
     </TodoLayout>
   );
 };
