@@ -1,21 +1,16 @@
-import { Dispatch, SetStateAction, startTransition } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useDeleteTodoMutation } from '../../../queries/todo';
+import { useGetTodoByIdQuery, useDeleteTodoMutation } from '../../../queries/todo';
 import Todo from '../../../types/todos';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 import { changeDateFormat } from '../../../utils/dateFormat';
 
-interface todoDetailProps {
-  todo: Todo;
-}
-
-const TodoDetail = ({ todo }: todoDetailProps) => {
+const TodoDetail = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { title, content, updatedAt } = todo;
+  const { title, content, updatedAt } = useGetTodoByIdQuery(params?.id).data?.data.data;
   const { mutate } = useDeleteTodoMutation(params?.id);
 
   return (

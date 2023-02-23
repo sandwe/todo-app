@@ -1,9 +1,7 @@
 import { useState, useEffect, lazy, Suspense, PropsWithChildren } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useGetTodoByIdQuery } from '../../queries/todo';
+import { useNavigate } from 'react-router-dom';
 import TodoFallback from '../../components/todos/TodoFallback';
-import TodoForm from '../../components/todos/TodoForm';
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';
 
@@ -25,9 +23,6 @@ const DefferedComponent = ({ children }: PropsWithChildren<{}>) => {
 
 const TodoDetailPage = () => {
   const navigate = useNavigate();
-  const params = useParams();
-
-  const { data: todo } = useGetTodoByIdQuery(params?.id).data?.data;
 
   return (
     <TodoLayout>
@@ -39,7 +34,7 @@ const TodoDetailPage = () => {
             </DefferedComponent>
           }
         >
-          <TodoDetail todo={todo} />
+          <TodoDetail />
         </Suspense>
       </ErrorBoundary>
     </TodoLayout>
