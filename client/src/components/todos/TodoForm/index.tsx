@@ -3,11 +3,11 @@ import useResizeTextArea from '../../../hooks/useResizeTextArea';
 
 import { Container, Input, TextArea } from './style';
 import Button from '../../common/Button';
-import Todo from '../../../types/todos';
+import TodoData from '../../../types/todos';
 import { useParams } from 'react-router-dom';
 
 interface todoFormProps {
-  todo?: Todo;
+  todo?: TodoData;
   mutate: any;
   isEditMode?: boolean;
 }

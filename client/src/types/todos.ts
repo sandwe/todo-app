@@ -3,7 +3,7 @@ export interface TodoForm {
   content: string;
 }
 
-export default interface Todo {
+export default interface TodoData {
   content: string;
   createdAt: string;
   id: string;
@@ -11,7 +11,7 @@ export default interface Todo {
   updatedAt: string;
 }
 
-export type TodoInput = Pick<Todo, 'title' | 'content'>;
+export type TodoInput = Pick<TodoData, 'title' | 'content'>;
 
 export interface TodoFormAndId {
   id: string | undefined;

@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useGetTodoByIdQuery, useDeleteTodoMutation } from '../../../queries/todo';
-import Todo from '../../../types/todos';
 import Button from '../../common/Button';
 import { Container, ButtonWrapper, Title, Content, UpdatedAt } from './style';
 import { changeDateFormat } from '../../../utils/dateFormat';
