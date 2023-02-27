@@ -26,9 +26,9 @@ const AuthForm = ({ type }: AuthFormProps) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     mutate({ email, password });
-    navigate('/', { replace: true });
   };
 
   return (
@@ -39,9 +39,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
       <label htmlFor='password'>비밀번호</label>
       <Input id='password' type='password' onChange={handleChangePassword} isValid={isPasswordValid} />
       <WarningText isWarn={!isPasswordValid && !!password.length}>비밀번호는 최소 8자 이상이어야 합니다.</WarningText>
-      <Button disabled={!isEmailValid || !isPasswordValid} type='submit'>
-        {type}
-      </Button>
+      <Button disabled={!isEmailValid || !isPasswordValid}>{type}</Button>
       {type === '로그인' && <LinkText to='/signup'>회원가입</LinkText>}
     </Form>
   );
