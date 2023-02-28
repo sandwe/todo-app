@@ -1,12 +1,12 @@
-import TodoContainer from '../../components/todos/TodoContainer';
-import TodoConatiner from '../../components/todos/TodoContainer';
+import TodoLayout from '../../components/todos/TodoLayout';
+import TodoConatiner from '../../components/todos/TodoLayout';
 import TodoMain from '../../components/todos/TodoMain';
 
 const MainPage = () => {
   return (
-    <TodoContainer>
+    <TodoLayout>
       <TodoMain />
-    </TodoContainer>
+    </TodoLayout>
   );
 };
 

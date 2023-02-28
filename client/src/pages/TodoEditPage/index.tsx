@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import TodoLayout from '../../components/todos/TodoContainer';
+import TodoLayout from '../../components/todos/TodoLayout';
 import TodoForm from '../../components/todos/TodoForm';
 import { useGetTodoByIdQuery, useUpdateTodoMutation } from '../../queries/todo';
 

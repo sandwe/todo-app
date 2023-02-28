@@ -1,5 +1,5 @@
 import TodoData from '../../../types/todos';
-import { TodoListProps } from '../TodoContainer';
+import { TodoListProps } from '../TodoLayout';
 import Button from '../../common/Button';
 import { Container, Wrapper, Text, Todos, Todo, Title, Content } from './style';
 

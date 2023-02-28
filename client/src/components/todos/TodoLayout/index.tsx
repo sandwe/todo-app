@@ -15,7 +15,7 @@ export interface TodoListProps {
   navigateToDetail: (id: string) => void;
 }
 
-const TodoContainer = ({ children }: TodoLayoutProps) => {
+const TodoLayout = ({ children }: TodoLayoutProps) => {
   const navigate = useNavigate();
   const { data } = useGetTodosQuery();
 
@@ -34,4 +34,4 @@ const TodoContainer = ({ children }: TodoLayoutProps) => {
   );
 };
 
-export default TodoContainer;
+export default TodoLayout;

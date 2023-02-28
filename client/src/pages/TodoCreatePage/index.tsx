@@ -1,4 +1,4 @@
-import TodoContainer from '../../components/todos/TodoContainer';
+import TodoLayout from '../../components/todos/TodoLayout';
 import TodoForm from '../../components/todos/TodoForm';
 import { usePostTodoMutation } from '../../queries/todo';
 
@@ -6,9 +6,9 @@ const TodoCreatePage = () => {
   const { mutate } = usePostTodoMutation();
 
   return (
-    <TodoContainer>
+    <TodoLayout>
       <TodoForm mutate={mutate} />
-    </TodoContainer>
+    </TodoLayout>
   );
 };
 
