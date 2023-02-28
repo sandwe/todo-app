@@ -1,10 +1,9 @@
-import { TodoListViewProps } from '.';
 import TodoData from '../../../types/todos';
-
+import { TodoListProps } from '../TodoContainer';
 import Button from '../../common/Button';
-import { Container, Wrapper, Text, Todos, Todo, Title, Content } from './TodoListView.style';
+import { Container, Wrapper, Text, Todos, Todo, Title, Content } from './style';
 
-const TodoListView = ({ todos, navigateToNew, navigateToDetail }: TodoListViewProps) => {
+const TodoListView = ({ todos, navigateToNew, navigateToDetail }: TodoListProps) => {
   return (
     <Container>
       <h3 className='sr-only'>할 일 목록</h3>

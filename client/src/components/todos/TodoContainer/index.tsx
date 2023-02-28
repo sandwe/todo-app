@@ -1,15 +1,34 @@
-import React from 'react';
-import TodoList from '../TodoList';
+import { startTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
+import TodoListView from '../TodoListView';
 import { Container } from './style';
+import { useGetTodosQuery } from '../../../queries/todo';
+import TodoData from '../../../types/todos';
 
-interface todoLayoutProps {
+interface TodoLayoutProps {
   children: React.ReactNode;
 }
-const TodoContainer = ({ children }: todoLayoutProps) => {
+
+export interface TodoListProps {
+  todos: TodoData[];
+  navigateToNew: () => void;
+  navigateToDetail: (id: string) => void;
+}
+
+const TodoContainer = ({ children }: TodoLayoutProps) => {
+  const navigate = useNavigate();
+  const { data } = useGetTodosQuery();
+
+  const todoListProps: TodoListProps = {
+    todos: data?.data.data,
+    navigateToNew: () => navigate('/new'),
+    navigateToDetail: (id) => startTransition(() => navigate(`/todos/${id}`)),
+  };
+
   return (
     <Container>
       <h2 className='sr-only'>할일 목록 및 할일 생성</h2>
-      <TodoList />
+      <TodoListView {...todoListProps} />
       {children}
     </Container>
   );
