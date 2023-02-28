@@ -2,7 +2,7 @@ import { useState, useEffect, lazy, Suspense, PropsWithChildren } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router-dom';
 import TodoFallback from '../../components/todos/TodoFallback';
-import TodoLayout from '../../components/todos/TodoLayout';
+import TodoContainer from '../../components/todos/TodoContainer';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';
 
 const TodoDetail = lazy(() => import('../../components/todos/TodoDetail'));
@@ -25,7 +25,7 @@ const TodoDetailPage = () => {
   const navigate = useNavigate();
 
   return (
-    <TodoLayout>
+    <TodoContainer>
       <ErrorBoundary FallbackComponent={TodoFallback} onReset={() => navigate('/')}>
         <Suspense
           fallback={
@@ -37,7 +37,7 @@ const TodoDetailPage = () => {
           <TodoDetail />
         </Suspense>
       </ErrorBoundary>
-    </TodoLayout>
+    </TodoContainer>
   );
 };
 
