@@ -6,7 +6,8 @@ import queryClient from './queryClient';
 
 export const useGetTodosQuery = () => useQuery(['todos'], todosAPI.getTodos);
 
-export const useGetTodoByIdQuery = (id: string | undefined) => useQuery(['todo', id], () => todosAPI.getTodoById(id));
+export const useGetTodoByIdQuery = (id: string | undefined) =>
+  useQuery(['todo', id], () => todosAPI.getTodoById(id), { select: (data) => data?.data.data });
 
 export const usePostTodoMutation = () => {
   const navigate = useNavigate();
