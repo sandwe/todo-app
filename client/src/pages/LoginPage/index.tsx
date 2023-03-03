@@ -7,6 +7,9 @@ export interface AuthFormProps {
   type: string;
   isEmailValid: boolean;
   isPasswordValid: boolean;
+  isEmailWarn: boolean;
+  isPasswordWarn: boolean;
+  disabledClick: boolean;
   handleChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
@@ -18,10 +21,16 @@ const LoginPage = () => {
 
   const { mutate } = useLoginMutation();
 
+  const isEmailValid = validateEmail(email);
+  const isPasswordValid = validatePassword(password);
+
   const authFormProps: AuthFormProps = {
     type: '로그인',
-    isEmailValid: validateEmail(email),
-    isPasswordValid: validatePassword(password),
+    isEmailValid,
+    isPasswordValid,
+    isEmailWarn: !isEmailValid && !!email.length,
+    isPasswordWarn: !isPasswordValid && !!password.length,
+    disabledClick: !isEmailValid || !isPasswordValid,
     handleChangeEmail: (e) => setEmail(e.target.value),
     handleChangePassword: (e) => setPassword(e.target.value),
     handleSubmit: (e) => {

@@ -11,10 +11,16 @@ const SignupPage = () => {
 
   const { mutate } = useSignupMutation();
 
+  const isEmailValid = validateEmail(email);
+  const isPasswordValid = validatePassword(password);
+
   const authFormProps: AuthFormProps = {
-    type: '로그인',
-    isEmailValid: validateEmail(email),
-    isPasswordValid: validatePassword(password),
+    type: '회원가입',
+    isEmailValid,
+    isPasswordValid,
+    isEmailWarn: !isEmailValid && !!email.length,
+    isPasswordWarn: !isPasswordValid && !!password.length,
+    disabledClick: !isEmailValid || !isPasswordValid,
     handleChangeEmail: (e) => setEmail(e.target.value),
     handleChangePassword: (e) => setPassword(e.target.value),
     handleSubmit: (e) => {
