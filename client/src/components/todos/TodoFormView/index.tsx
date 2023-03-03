@@ -4,7 +4,7 @@ import { Container, Input, TextArea } from './style';
 import Button from '../../common/Button';
 import { TodoFormProps } from '../../../pages/TodoCreatePage';
 
-const TodoForm = ({
+const TodoFormView = ({
   contentRef,
   title,
   content,
@@ -34,4 +34,4 @@ const TodoForm = ({
   );
 };
 
-export default TodoForm;
+export default TodoFormView;

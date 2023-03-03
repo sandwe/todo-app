@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 
 import TodoLayout from '../../components/todos/TodoLayout';
-import TodoForm from '../../components/todos/TodoForm';
+import TodoFormView from '../../components/todos/TodoFormView';
 import { usePostTodoMutation } from '../../queries/todo';
 
 export interface TodoFormProps {
@@ -34,7 +34,7 @@ const TodoCreatePage = () => {
 
   return (
     <TodoLayout>
-      <TodoForm {...todoFormProps} />
+      <TodoFormView {...todoFormProps} />
     </TodoLayout>
   );
 };

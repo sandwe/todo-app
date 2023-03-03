@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import TodoLayout from '../../components/todos/TodoLayout';
-import TodoForm from '../../components/todos/TodoForm';
+import TodoFormView from '../../components/todos/TodoFormView';
 import { useGetTodoByIdQuery, useUpdateTodoMutation } from '../../queries/todo';
 import { TodoFormProps } from '../TodoCreatePage';
 
@@ -30,7 +30,7 @@ const TodoEditPage = () => {
 
   return (
     <TodoLayout>
-      <TodoForm {...todoFormProps} />
+      <TodoFormView {...todoFormProps} />
     </TodoLayout>
   );
 };
