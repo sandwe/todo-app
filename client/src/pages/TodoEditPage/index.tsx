@@ -5,7 +5,7 @@ import TodoLayout from '../../components/todos/TodoLayout';
 import TodoForm from '../../components/todos/TodoForm';
 import { useGetTodoByIdQuery, useUpdateTodoMutation } from '../../queries/todo';
 import { TodoFormProps } from '../TodoCreatePage';
-import { VAC } from 'react-vac';
+
 const TodoEditPage = () => {
   const params = useParams();
 
@@ -18,6 +18,8 @@ const TodoEditPage = () => {
 
   const todoFormProps: TodoFormProps = {
     contentRef,
+    title,
+    content,
     handleChangeTitle: (e) => setTitle(e.target.value),
     handleChangeContent: (e) => setContent(e.target.value),
     handleSubmit: (e) => {
@@ -28,8 +30,7 @@ const TodoEditPage = () => {
 
   return (
     <TodoLayout>
-      <VAC name='view' data={todoFormProps} />
-      {/* <TodoForm todo={todo} mutate={mutate} isEditMode={true} /> */}
+      <TodoForm {...todoFormProps} />
     </TodoLayout>
   );
 };

@@ -1,37 +1,18 @@
-import { useState, useRef, FormEvent } from 'react';
 import useResizeTextArea from '../../../hooks/useResizeTextArea';
 
 import { Container, Input, TextArea } from './style';
 import Button from '../../common/Button';
-import TodoData from '../../../types/todos';
-import { useParams } from 'react-router-dom';
+import { TodoFormProps } from '../../../pages/TodoCreatePage';
 
-interface todoFormProps {
-  todo?: TodoData;
-  mutate: any;
-  isEditMode?: boolean;
-}
-
-const TodoForm = ({ todo, mutate, isEditMode }: todoFormProps) => {
-  const params = useParams();
-
-  const [title, setTitle] = useState(todo?.title || '');
-  const [content, setContent] = useState(todo?.content || '');
-  const refContent = useRef<HTMLTextAreaElement>(null);
-
-  useResizeTextArea(refContent.current, content);
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
-
-  const handleChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(e.target.value);
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    isEditMode ? mutate({ id: params?.id, data: { title, content } }) : mutate({ title, content });
-  };
+const TodoForm = ({
+  contentRef,
+  title,
+  content,
+  handleChangeTitle,
+  handleChangeContent,
+  handleSubmit,
+}: TodoFormProps) => {
+  useResizeTextArea(contentRef.current, content);
 
   return (
     <Container>
@@ -42,7 +23,7 @@ const TodoForm = ({ todo, mutate, isEditMode }: todoFormProps) => {
         <TextArea
           id='content'
           placeholder='내용을 입력하세요'
-          ref={refContent}
+          ref={contentRef}
           rows={1}
           onChange={handleChangeContent}
           value={content}
