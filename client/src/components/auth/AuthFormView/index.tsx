@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLoginMutation, useSignupMutation } from '../../../queries/auth';
 import { validateEmail, validatePassword } from '../../../utils/validator';
 import Button from '../../common/Button';
@@ -8,8 +7,7 @@ import { Container, Title, Form, Input, LinkText, WarningText } from './style';
 interface AuthFormProps {
   type: string;
 }
-const AuthForm = ({ type }: AuthFormProps) => {
-  const navigate = useNavigate();
+const AuthFormView = ({ type }: AuthFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -48,4 +46,4 @@ const AuthForm = ({ type }: AuthFormProps) => {
   );
 };
 
-export default AuthForm;
+export default AuthFormView;
