@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoFormView from '../../components/todos/TodoFormView';
-import { usePostTodoMutation } from '../../queries/todo';
+import { usePostTodoMutation } from '../../hooks/queries/todo';
 
 export interface TodoFormProps {
   contentRef: React.RefObject<HTMLTextAreaElement>;

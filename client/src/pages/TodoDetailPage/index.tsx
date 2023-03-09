@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDeleteTodoMutation, useGetTodoByIdQuery } from '../../queries/todo';
+import { useDeleteTodoMutation, useGetTodoByIdQuery } from '../../hooks/queries/todo';
 import TodoFallback from '../../components/todos/TodoFallback';
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';

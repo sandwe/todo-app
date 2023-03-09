@@ -3,7 +3,7 @@ import { validateEmail, validatePassword } from '../../utils/validator';
 import AuthFormView from '../../components/auth/AuthFormView';
 
 import { AuthFormProps } from '../LoginPage';
-import { useSignupMutation } from '../../queries/auth';
+import { useSignupMutation } from '../../hooks/queries/auth';
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');

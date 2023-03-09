@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoginMutation } from '../../queries/auth';
+import { useLoginMutation } from '../../hooks/queries/auth';
 import { validateEmail, validatePassword } from '../../utils/validator';
 import AuthFormView from '../../components/auth/AuthFormView';
 

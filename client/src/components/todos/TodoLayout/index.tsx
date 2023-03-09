@@ -2,7 +2,7 @@ import { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TodoListView from '../TodoListView';
 import { Container } from './style';
-import { useGetTodosQuery } from '../../../queries/todo';
+import { useGetTodosQuery } from '../../../hooks/queries/todo';
 import TodoData from '../../../types/todos';
 
 interface TodoLayoutProps {
