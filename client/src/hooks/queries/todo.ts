@@ -1,12 +1,13 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import todosAPI from '../api/todos';
-import { TodoForm, TodoFormAndId } from '../types/todos';
-import queryClient from './queryClient';
+import todosAPI from '../../api/todos';
+import { TodoFormAndId } from '../../types/todos';
+import { queryClient } from '../../App';
 
 export const useGetTodosQuery = () => useQuery(['todos'], todosAPI.getTodos);
 
-export const useGetTodoByIdQuery = (id: string | undefined) => useQuery(['todo', id], () => todosAPI.getTodoById(id));
+export const useGetTodoByIdQuery = (id: string | undefined) =>
+  useQuery(['todo', id], () => todosAPI.getTodoById(id), { select: (data) => data?.data.data });
 
 export const usePostTodoMutation = () => {
   const navigate = useNavigate();

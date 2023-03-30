@@ -1,28 +1,40 @@
-import { useState, useEffect, lazy, Suspense, PropsWithChildren } from 'react';
+import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDeleteTodoMutation, useGetTodoByIdQuery } from '../../hooks/queries/todo';
 import TodoFallback from '../../components/todos/TodoFallback';
 import TodoLayout from '../../components/todos/TodoLayout';
 import TodoSkeleton from '../../components/todos/TodoSkeleton';
+import DefferedComponent from '../../components/common/DefferedComponent';
+import TodoData from '../../types/todos';
+import { changeDateFormat } from '../../utils/dateFormat';
 
-const TodoDetail = lazy(() => import('../../components/todos/TodoDetail'));
+const TodoDetailView = lazy(() => import('../../components/todos/TodoDetailView'));
 
-const DefferedComponent = ({ children }: PropsWithChildren<{}>) => {
-  const [isDeffered, setIsDeffered] = useState(false);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsDeffered(true);
-    }, 200);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  if (!isDeffered) return null;
-  return <>{children}</>;
-};
+export interface TodoDetailProps {
+  todo: Pick<TodoData, 'title' | 'content' | 'updatedAt'>;
+  deleteTodo: () => void;
+  navigateToEdit: () => void;
+}
 
 const TodoDetailPage = () => {
   const navigate = useNavigate();
+  const params = useParams();
+
+  const {
+    data: { title, content, updatedAt },
+  } = useGetTodoByIdQuery(params?.id);
+  const { mutate } = useDeleteTodoMutation(params?.id);
+
+  const todoDetailProps: TodoDetailProps = {
+    todo: {
+      title,
+      content,
+      updatedAt: changeDateFormat(updatedAt),
+    },
+    deleteTodo: mutate,
+    navigateToEdit: () => navigate(`/edit/${params.id}`),
+  };
 
   return (
     <TodoLayout>
@@ -34,7 +46,7 @@ const TodoDetailPage = () => {
             </DefferedComponent>
           }
         >
-          <TodoDetail />
+          <TodoDetailView {...todoDetailProps} />
         </Suspense>
       </ErrorBoundary>
     </TodoLayout>

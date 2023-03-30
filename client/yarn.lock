@@ -1531,6 +1531,11 @@ react-router@6.6.2:
   dependencies:
     "@remix-run/router" "1.2.1"
 
+react-vac@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-vac/-/react-vac-0.3.0.tgz#de1f53a6f654c0fff00b6f7fa58e65b4c6ce737f"
+  integrity sha512-UVmOBCTg3Uo6OQHLXGuT1L0bR47C9e5UHsf8LfQql842JERe3sDSIBhAi1TzWeK1udusYIUxaSW0gAtPgObfmg==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
